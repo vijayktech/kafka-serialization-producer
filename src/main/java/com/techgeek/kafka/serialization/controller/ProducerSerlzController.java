@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/kafka-srlz")
 public class ProducerSerlzController {
 
-
     @Autowired
     private KafkaMessagePublisher publisher;
 
     @PostMapping("/customer")
-    public void producerCustomers(@RequestBody Customer cust){
+    public void producerCustomers(@RequestBody Customer cust) {
         publisher.sendCustomerTopic(cust);
     }
 }

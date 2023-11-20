@@ -12,11 +12,10 @@ import java.util.concurrent.CompletableFuture;
 public class KafkaMessagePublisher {
 
     @Autowired
-    private KafkaTemplate<String, Object> kafkaTemplate;
+    private KafkaTemplate<String, Object> template;
 
-
-    public void sendCustomerTopic(Customer customer){
-        CompletableFuture<SendResult<String, Object>> send = kafkaTemplate.send("techgeek-topic1", customer);
+    public void sendCustomerTopic(Customer customer) {
+        CompletableFuture<SendResult<String, Object>> send = template.send("techgeek-topic2", customer);
         send.whenComplete((result, ex) -> {
             if (ex == null) {
                 System.out.println("Sent message=[" + customer.toString() +
